@@ -76,6 +76,8 @@ When you are ready to finish playing with hbase ...
 
 - ```vagrant halt```
 
+When you want to play again, cd back the ```vagrant-hbase``` folder the steps from *Starting the guest*
+
 ### Destroy the guest
 
 When you are finished with this environment and want to destroy it ...
