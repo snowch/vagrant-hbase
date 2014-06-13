@@ -15,44 +15,63 @@ The guest desktop can be connected to using Microsoft Remote Desktop Client or r
 ### Starting the guest
 
 - ```vagrant up```
--  next proceed to *Logging into the guest*
+-  next proceed to *Logging into the guest desktop*
 
-### Logging into the guest
+### Logging into the guest desktop
 
-After ```vagrant up``` Use Microsoft Remote Desktop Client or rdesktop to connect to:
+After starting the guest ...
 
-- hostname: 192.168.50.4
-- username: vagrant
-- password: vagrant
+- Use Microsoft Remote Desktop Client or rdesktop to connect using:
+  - hostname: 192.168.50.4
+  - username: vagrant
+  - password: vagrant
 
-Note: the first time you connect may take a while for the desktop to be setup.
+NOTE: the first time you connect may take a while for the desktop to be setup.
 
 When you see the prompt: ```Welcome to the first start of the panel```, click ```Use default config```.
 
-- next proceed to *Running hbase*
+- next proceed to *Starting hbase*
 
-### Running hbase
+### Starting hbase
 
-- Open a terminal
+After logging into the guest desktop ...
+
+- Open a terminal (click Application Menu -> Terminal Emulator)
 - enter ```start-hbase.sh``` followed by [enter]
+
 
 ### Run the hbase commmand line
 
-- TODO
+After starting hbase ...
+
+- Open a terminal (click Application Menu -> Terminal Emulator)
+- enter ```hbase shell``` followed by [enter]
+- you can now proceed to enter some hbase shell commands
 
 ### Run some java client code
 
-- TODO
+After logging into the guest desktop and starting hbase ...
+
+- Open eclipse (click Application Menu -> Development > Eclipse)
+- Click OK to select the default workspace (/home/vagrant/workspace)
+- Click on the Workbench icon
+- Click Window -> Open Perspective -> Java
+- In the package explorer, expand hbase -> src/main/java -> hbase
+- Right click Main.java
+- Select Run As -> Java Application
+- The code creates a table 'users'
 
 ### Shutting down the guest
+
+When you are ready to finish playing with hbase ...
 
 - ```vagrant halt```
 
 ### Destroy the guest
 
-Warning: This removes all traces of your changes in the guest.
+When you are finished with this environment and want to destroy it ...
 
 - ```vagrant destroy```
 
-
+WARNING: This removes all traces of your changes in the guest.
 
