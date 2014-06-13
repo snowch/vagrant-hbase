@@ -6,6 +6,13 @@ This environment sets up a completely self contained HBase development environme
 
 The guest desktop can be connected to using Microsoft Remote Desktop Client or rdesktop (from *nix).
 
+This environment is intended as a quick start for 
+
+###  Pre-requisites
+
+- Install [Vagrant](https://www.vagrantup.com/downloads.html)
+- Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+
 ### Setup the guest
 
 - ```git clone https://github.com/snowch/vagrant-hbase.git```
