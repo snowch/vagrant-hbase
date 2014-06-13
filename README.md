@@ -1,0 +1,1 @@
+# Vagrant HBase Development Environment
