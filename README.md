@@ -52,10 +52,7 @@ When you see the prompt: ```Welcome to the first start of the panel```, click ``
 
 Warning: This removes all traces of your changes in the guest.
 
-- vagrant destroy
-
-### Starting HBase
-
+- ```vagrant destroy```
 
 
 
