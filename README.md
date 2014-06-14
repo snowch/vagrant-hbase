@@ -2,11 +2,11 @@
 
 ### Overview
 
-This environment sets up a completely self contained HBase development environment with eclipse and Ubuntu XFCE.
+This environment sets up a completely self contained HBase development environment with eclipse and Ubuntu XFCE Desktop.
 
 The guest desktop can be connected to using Microsoft Remote Desktop Client or rdesktop (from *nix).
 
-This environment was intended as a quick start for Windows users who want to play with hbase with minimal effort.
+This environment was intended as a quick start for Windows users who want to play with hbase with minimal effort, but it is also useful for linux or Mac users who want to setup a hbase development environment that can be easily removed when finished with.
 
 ###  Pre-requisites
 
