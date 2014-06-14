@@ -10,10 +10,10 @@ This environment was intended as a quick start for Windows users who want to pla
 
 ###  Pre-requisites
 
-- Install [Vagrant](https://www.vagrantup.com/downloads.html)
-- Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads)
+- Install [Vagrant](https://www.vagrantup.com/downloads.html) (minimum version 1.6.3)
+- Install [Virtualbox](https://www.virtualbox.org/wiki/Downloads) (minimum version 4.3.12 r93733)
 - Approx 1.5 Gb free ram and 10 Gb free disk space
-- An Internet connection
+- Internet connection as a few Gb will be downloaded
 
 ### Setup the guest
 
