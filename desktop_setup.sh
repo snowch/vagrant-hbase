@@ -29,42 +29,6 @@ if [[ ! -e X11RDP-o-Matic ]]; then
    echo xfce4-session >~/.xsession
 fi
 
-cd $HOME
-
-if [[ ! -e hbase-0.98.3-hadoop2 ]]; then
-  sudo sed -i -e '/^127.0.1.1/d' /etc/hosts
-  wget -N -c http://www.mirrorservice.org/sites/ftp.apache.org/hbase/hbase-0.98.3/hbase-0.98.3-hadoop2-bin.tar.gz
-  tar xvzf hbase-0.98.3-hadoop2-bin.tar.gz
-
-cat << EOF >> /home/vagrant/.profile
-export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64/
-export HBASE_HOME=/home/vagrant/hbase-0.98.3-hadoop2/
-export PATH=\$PATH:\$HBASE_HOME/bin
-EOF
-
-fi
-
-source /home/vagrant/.profile
-
-cat << EOF > $HBASE_HOME/conf/hbase-site.xml
-<?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-<configuration>
-  <property>
-    <name>hbase.rootdir</name>
-    <value>file:///home/vagrant/hbasedata/hbase</value>
-  </property>
-  <property>
-    <name>hbase.zookeeper.property.dataDir</name>
-    <value>/home/vagrant/hbasedata/zookeeper</value>
-  </property>
-</configuration>
-EOF
-
-set +e
-
-start-hbase.sh
-
 # import project into eclipse
 
 cd /vagrant/samples/client/hbase
