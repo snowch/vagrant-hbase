@@ -1,11 +1,11 @@
 #!/bin/bash
 
+# based on: http://bigdatahandler.com/hadoop-hdfs/installing-single-node-hadoop-2-2-0-on-ubuntu/
+
 set -e
 set -x
 
 cd $HOME
-
-
 
 tar xvzf hadoop-2.2.0.tar.gz
 
@@ -127,4 +127,17 @@ mkdir -p $HADOOP_HOME/yarn_data/hdfs/namenode
 sudo mkdir -p $HADOOP_HOME/yarn_data/hdfs/namenode
 mkdir -p $HADOOP_HOME/yarn_data/hdfs/datanode
 
+# start services
+
+hadoop namenode -format
+hadoop-daemon.sh start datanode
+yarn-daemon.sh start resourcemanager
+yarn-daemon.sh start nodemanager
+mr-jobhistory-daemon.sh start historyserver
+
+# create the home folder and make sure we can list the root folder
+
+hadoop fs -mkdir -p $HOME
+
+hadoop fs -ls /
 
