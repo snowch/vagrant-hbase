@@ -7,14 +7,17 @@ set -x
 
 cd $HOME
 
-tar xvzf hadoop-2.2.0.tar.gz
-
 if [[ ! -e hadoop-2.2.0.tar.gz ]]; then
-  sudo sed -i -e '/^127.0.1.1/d' /etc/hosts
   wget -N -c http://mirrors.ukfast.co.uk/sites/ftp.apache.org/hadoop/common/stable/hadoop-2.2.0.tar.gz
-  tar xvzf hadoop-2.2.0.tar.gz
 fi
 
+# TODO - get confirmation before destroying
+
+rm -rf $HOME/hadoop-2.2.0
+tar xzf hadoop-2.2.0.tar.gz
+
+sudo sed -i -e '/^127.0.1.1/d' /etc/hosts
+sudo sed -i -e '/^127.0.0.1/d' /etc/hosts
 
 function add_or_replace_line() {
   SEARCH=$1 
@@ -45,6 +48,15 @@ export HADOOP_OPTS="-Djava.library.path=\$HADOOP_PREFIX/lib"
 # Add Hadoop bin/ directory to PATH
 export PATH=\$PATH:\$HADOOP_HOME/bin:\$HADOOP_HOME/sbin
 EOF
+
+# update /etc/hosts
+
+add_or_replace_line \
+   '192.168.50.4 trusty64 localhost' \
+   '192.168.50.4 trusty64 localhost' \
+   '/etc/hosts' \
+
+# update profile
 
 add_or_replace_line \
    'source $HOME/.profile_hadoop' \
@@ -92,7 +104,7 @@ cat << EOF > $HADOOP_HOME/etc/hadoop/core-site.xml
 <configuration>
 <property>
 <name>fs.default.name</name>
-<value>hdfs://localhost:9000</value>
+<value>hdfs://trusty64:9000</value>
 </property>
 </configuration>
 EOF
@@ -127,9 +139,13 @@ mkdir -p $HADOOP_HOME/yarn_data/hdfs/namenode
 sudo mkdir -p $HADOOP_HOME/yarn_data/hdfs/namenode
 mkdir -p $HADOOP_HOME/yarn_data/hdfs/datanode
 
-# start services
+# prepare namenode
 
 hadoop namenode -format
+
+# start services
+
+hadoop-daemon.sh start namenode
 hadoop-daemon.sh start datanode
 yarn-daemon.sh start resourcemanager
 yarn-daemon.sh start nodemanager
