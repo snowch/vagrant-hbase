@@ -19,6 +19,7 @@ apt-get install -y git eclipse maven openjdk-6-jdk gnome-terminal firefox
 "
 
 echo 'mode: off' > ~/.xscreensaver
+sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
 
 cd $HOME
 
@@ -27,6 +28,7 @@ if [[ ! -e X11RDP-o-Matic ]]; then
    cd X11RDP-o-Matic
    sudo ./X11rdp-o-matic.sh --justdoit
    echo xfce4-session >~/.xsession
+   echo :color desert >  ~/.vimrc
 fi
 
 # import project into eclipse
